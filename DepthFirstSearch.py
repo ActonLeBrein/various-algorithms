@@ -28,4 +28,4 @@ def DFS(g,s,e,p):
             DFS(g,tmp_path[i],e,path)
             i += 1
 
-DFS(graph,'A','D',[])?
+DFS(graph,'A','D',[])
