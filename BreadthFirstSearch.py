@@ -37,11 +37,8 @@ path_queue = MyQUEUE() # now we make a queue
 
 
 def BFS(graph,start,end,q):
-	
 	temp_path = [start]
-	
 	q.enqueue(temp_path)
-	
 	while q.IsEmpty() == False:
 		tmp_path = q.dequeue()
 		last_node = tmp_path[len(tmp_path)-1]
@@ -92,4 +89,17 @@ def BFS(g,s,e,p):
         BFS(g,tmp_path[i],e,path)
         i += 1
 
-BFS(graph,'A','D',[])?
+BFS(graph,'A','D',[])
+
+
+def bfs_paths(graph,start,goal):
+    queue=[(start,[start])]
+    while queue:
+        (vertex,path)=queue.pop(0)
+        for next in set(graph[vertex])-set(path):
+            if next==goal:
+                yield path+[next]
+            else:
+                queue.append((next,path+[next]))
+
+print list(bfs_paths(graph,'A','F'))
