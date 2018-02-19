@@ -69,3 +69,20 @@ stream = "ycaarcarzkiucatuifeadogsdoooggdogfxvcatcatcatdwzqhaaathat"
 words = ["car", "dog", "cat", "hat"]
 for word_count in count_words( stream, words ):
     print '\'', word_count[0], '\': ', word_count[1], ' ',
+
+###################################################################################
+
+def count_word_super_efficient(string,words):
+    result = {}
+    len_words=list(set([len(w) for w in words]))
+    result={w:0 for w in words}
+    for char_s in xrange(len(string)-min(len_words)):
+        for word in len_words:
+          try:
+            if string[char_s:char_s+word] in words:
+              result[string[char_s:char_s+word]]+=1
+          except:
+            pass
+    return result
+
+print count_word_super_efficient(stream,words)
